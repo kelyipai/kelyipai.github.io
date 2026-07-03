@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="個人主頁 — Kel Yip，熱衷於打造簡潔高效的產品。">
+  <title>Kel Yip — 個人主頁</title>
+
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ Navigation ============ -->
+  <nav class="nav" role="navigation" aria-label="主導航">
+    <div class="container">
+      <span class="nav-logo">YN.</span>
+      <ul class="nav-links">
+        <li><a href="#about">關於</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#portfolio">作品</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-content fade-in">
+      <h1 class="hero-name">
+        你好，我是<br>
+        <span class="highlight">Kel Yip</span>
+      </h1>
+      <p class="hero-tagline">
+        全端開發者 · 熱衷於打造簡潔、高效、有溫度的產品
+      </p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn btn-primary">查看作品</a>
+        <a href="#contact" class="btn btn-outline">與我聯絡</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>向下滾動</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ============ About ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title fade-in">關於我</h2>
+      <p class="section-subtitle fade-in">ABOUT</p>
+      <div class="about-grid">
+        <img class="about-avatar fade-in" src="assets/avatar.jpg" alt="Kel Yip 頭像">
+        <div class="about-text fade-in">
+          <h3>用程式碼解決問題的開發者</h3>
+          <p>
+            我是一名全端開發者，擁有 X 年經驗，專注於 Web 應用開發與設計系統。
+            從前端的使用者體驗到後端的架構設計，我致力於打造高品質、可維護的產品。
+          </p>
+          <p>
+            工作之餘，我喜歡參與開源專案、撰寫技術文章，以及探索新技術。
+            我相信好的程式碼不僅要能運作，更要讓人易於理解與擴展。
+          </p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-outline">與我合作</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Skills ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title fade-in">專業技能</h2>
+      <p class="section-subtitle fade-in">SKILLS</p>
+      <div class="skills-grid">
+
+        <div class="skill-category fade-in">
+          <h4>前端</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML / CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Vue</span>
+            <span class="skill-tag">Tailwind</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <h4>後端</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Go</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Redis</span>
+            <span class="skill-tag">GraphQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <h4>工具與其他</h4>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Portfolio ============ -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <h2 class="section-title fade-in">作品集</h2>
+      <p class="section-subtitle fade-in">PORTFOLIO</p>
+      <div class="portfolio-grid">
+
+        <article class="project-card fade-in">
+          <img class="project-thumb" src="assets/project-1.jpg" alt="專案名稱 A 截圖">
+          <div class="project-body">
+            <h4>專案名稱 A</h4>
+            <p>
+              一個簡潔高效的任務管理工具，支援即時協作與拖曳排序，
+              幫助團隊提升生產力。
+            </p>
+            <div class="project-tech">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <img class="project-thumb" src="assets/project-2.jpg" alt="專案名稱 B 截圖">
+          <div class="project-body">
+            <h4>專案名稱 B</h4>
+            <p>
+              數據可視化儀表板，將複雜數據轉化為直覺的圖表與指標，
+              支援多種資料來源。
+            </p>
+            <div class="project-tech">
+              <span>Vue</span>
+              <span>D3.js</span>
+              <span>Python</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <img class="project-thumb" src="assets/project-3.jpg" alt="專案名稱 C 截圖">
+          <div class="project-body">
+            <h4>專案名稱 C</h4>
+            <p>
+              開源元件庫，提供 30+ 個可無障礙存取的 UI 元件，
+              專注於開發者體驗與自訂性。
+            </p>
+            <div class="project-tech">
+              <span>TypeScript</span>
+              <span>React</span>
+              <span>Storybook</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Contact ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title fade-in">與我聯絡</h2>
+      <p class="section-subtitle fade-in">CONTACT</p>
+      <div class="contact-content fade-in">
+        <p>
+          有興趣合作、交流，或只是想打聲招呼？歡迎填寫表單或透過社群與我聯繫。
+        </p>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" placeholder="你的姓名" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">訊息</label>
+            <textarea id="message" name="message" placeholder="寫下你想說的話..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">送出訊息</button>
+        </form>
+        <div class="contact-social">
+          <a href="#" aria-label="GitHub" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" aria-label="Email" title="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer class="footer">
+    <div class="container">
+      <button class="back-to-top" aria-label="回到頂部">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+      <p>&copy; 2026 Kel Yip. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
