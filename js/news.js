@@ -8,11 +8,11 @@
   const RSS2JSON = 'https://api.rss2json.com/v1/api.json';
 
   const SPORTS_CONFIG = [
-    { id: 'marathon',   name: '馬拉松', en: 'MARATHON',   keyword: '馬拉松', color: '#00f0ff', image: 'assets/sport-marathon.jpg' },
-    { id: 'cycling',    name: '單車',   en: 'CYCLING',    keyword: '單車',   color: '#ff00ff', image: 'assets/sport-cycling.jpg' },
-    { id: 'swimming',   name: '游泳',   en: 'SWIMMING',   keyword: '游泳',   color: '#00aaff', image: 'assets/sport-swimming.jpg' },
-    { id: 'hiking',     name: '行山',   en: 'HIKING',     keyword: '行山',   color: '#00ff88', image: 'assets/sport-hiking.jpg' },
-    { id: 'pickleball', name: '匹克球', en: 'PICKLEBALL', keyword: '匹克球', color: '#7b2ff7', image: 'assets/sport-pickleball.jpg' }
+    { id: 'marathon',   name: '馬拉松', en: 'MARATHON',   keyword: '馬拉松',   fallback: '馬拉松賽事', color: '#00f0ff', image: 'assets/sport-marathon.jpg' },
+    { id: 'cycling',    name: '單車',   en: 'CYCLING',    keyword: '單車',   fallback: '單車賽事',   color: '#ff00ff', image: 'assets/sport-cycling.jpg' },
+    { id: 'swimming',   name: '游泳',   en: 'SWIMMING',   keyword: '游泳',   fallback: '游泳比賽',   color: '#00aaff', image: 'assets/sport-swimming.jpg' },
+    { id: 'hiking',     name: '行山',   en: 'HIKING',     keyword: '行山',   fallback: '登山',       color: '#00ff88', image: 'assets/sport-hiking.jpg' },
+    { id: 'pickleball', name: '匹克球', en: 'PICKLEBALL', keyword: '匹克球', fallback: 'pickleball', color: '#7b2ff7', image: 'assets/sport-pickleball.jpg' }
   ];
 
   function formatDate(pubDate) {
@@ -38,14 +38,14 @@
     }
   }
 
-  async function fetchSportNews(keyword) {
+  async function fetchNewsByKeyword(keyword) {
     const rssUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(keyword) + '&hl=zh-Hant&gl=TW&ceid=TW:zh-Hant';
     const apiUrl = RSS2JSON + '?rss_url=' + encodeURIComponent(rssUrl);
 
-    const res = await fetch(apiUrl);
+    const res = await fetch(apiUrl, { cache: 'no-store' });
     const data = await res.json();
 
-    if (data.status === 'ok' && data.items) {
+    if (data.status === 'ok' && data.items && data.items.length > 0) {
       return data.items.slice(0, 5).map(function (item) {
         return {
           title: item.title,
@@ -56,6 +56,34 @@
       });
     }
     return [];
+  }
+
+  async function fetchSportNews(sport, attempt) {
+    attempt = attempt || 1;
+    const maxAttempts = 3;
+
+    try {
+      // Primary keyword
+      var news = await fetchNewsByKeyword(sport.keyword);
+      if (news.length > 0) return news;
+
+      // Fallback keyword
+      if (sport.fallback && sport.fallback !== sport.keyword) {
+        news = await fetchNewsByKeyword(sport.fallback);
+        if (news.length > 0) return news;
+      }
+
+      // If empty but API responded, no retry needed
+      return [];
+    } catch (err) {
+      if (attempt < maxAttempts) {
+        // Exponential backoff: 1s, 2s
+        var delay = attempt * 1000;
+        await new Promise(function (resolve) { setTimeout(resolve, delay); });
+        return fetchSportNews(sport, attempt + 1);
+      }
+      throw err;
+    }
   }
 
   function renderNewsList(container, news, isError) {
@@ -123,7 +151,7 @@
     list.innerHTML = '<div class="news-loading">載入中...</div>';
 
     try {
-      var news = await fetchSportNews(sport.keyword);
+      var news = await fetchSportNews(sport);
       renderNewsList(list, news, false);
     } catch (err) {
       console.error('News fetch error for ' + sport.id + ':', err);
@@ -154,12 +182,12 @@
       });
     });
 
-    // Auto-load news with 300ms interval
+    // Auto-load news with 1000ms interval to avoid rss2json rate limits
     SPORTS_CONFIG.forEach(function (sport, idx) {
       setTimeout(function () {
         var btn = document.querySelector('.refresh-btn[data-sport-id="' + sport.id + '"]');
         handleRefresh(sport, btn);
-      }, idx * 300);
+      }, idx * 1000);
     });
   }
 
