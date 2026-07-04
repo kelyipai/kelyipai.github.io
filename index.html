@@ -3,46 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="個人主頁 — Kel Yip，熱衷於打造簡潔高效的產品。">
+  <meta name="description" content="Kel Yip 個人主頁 — 探索運動與科學的交匯點">
   <title>Kel Yip — 個人主頁</title>
 
-  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <!-- Google Fonts: Orbitron + Noto Sans TC + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- ============ Mouse Glow Overlay ============ -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <!-- ============ Navigation ============ -->
   <nav class="nav" role="navigation" aria-label="主導航">
     <div class="container">
-      <span class="nav-logo">YN.</span>
-      <ul class="nav-links">
-        <li><a href="#about">關於</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#portfolio">作品</a></li>
-        <li><a href="#contact">聯絡</a></li>
+      <span class="nav-logo">KY.</span>
+      <button class="nav-toggle" id="navToggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">首頁</a></li>
+        <li><a href="#sports">運動</a></li>
+        <li><a href="#science">科學</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- ============ Hero ============ -->
   <section class="hero" id="hero">
-    <div class="hero-content fade-in">
-      <h1 class="hero-name">
-        你好，我是<br>
-        <span class="highlight">Kel Yip</span>
-      </h1>
-      <p class="hero-tagline">
-        全端開發者 · 熱衷於打造簡潔、高效、有溫度的產品
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-greeting fade-in">你好，我是</p>
+      <h1 class="hero-name neon-text">Kel Yip</h1>
+      <p class="hero-typewriter">
+        <span id="typewriter"></span><span class="cursor">|</span>
       </p>
-      <div class="hero-cta">
-        <a href="#portfolio" class="btn btn-primary">查看作品</a>
-        <a href="#contact" class="btn btn-outline">與我聯絡</a>
+      <div class="hero-cta fade-in">
+        <a href="#sports" class="btn btn-primary">探索運動</a>
+        <a href="#science" class="btn btn-outline">科學世界</a>
       </div>
     </div>
     <div class="scroll-indicator">
@@ -51,189 +56,117 @@
     </div>
   </section>
 
-  <!-- ============ About ============ -->
-  <section class="section" id="about">
+  <!-- ============ Sports Section ============ -->
+  <section class="section section-sports" id="sports">
     <div class="container">
-      <h2 class="section-title fade-in">關於我</h2>
-      <p class="section-subtitle fade-in">ABOUT</p>
-      <div class="about-grid">
-        <img class="about-avatar fade-in" src="assets/avatar.jpg" alt="Kel Yip 頭像">
-        <div class="about-text fade-in">
-          <h3>用程式碼解決問題的開發者</h3>
-          <p>
-            我是一名全端開發者，擁有 X 年經驗，專注於 Web 應用開發與設計系統。
-            從前端的使用者體驗到後端的架構設計，我致力於打造高品質、可維護的產品。
-          </p>
-          <p>
-            工作之餘，我喜歡參與開源專案、撰寫技術文章，以及探索新技術。
-            我相信好的程式碼不僅要能運作，更要讓人易於理解與擴展。
-          </p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-outline">與我合作</a>
-          </div>
-        </div>
+      <h2 class="section-title neon-text-green fade-in">運動興趣</h2>
+      <p class="section-subtitle fade-in">SPORTS &amp; PASSION</p>
+      <div class="sports-grid" id="sportsGrid">
+        <!-- Cards rendered by news.js -->
       </div>
     </div>
   </section>
 
-  <!-- ============ Skills ============ -->
-  <section class="section" id="skills">
+  <!-- ============ Science Section ============ -->
+  <section class="section section-science" id="science">
     <div class="container">
-      <h2 class="section-title fade-in">專業技能</h2>
-      <p class="section-subtitle fade-in">SKILLS</p>
-      <div class="skills-grid">
+      <h2 class="section-title neon-text-purple fade-in">科學探索</h2>
+      <p class="section-subtitle fade-in">SCIENCE &amp; KNOWLEDGE</p>
 
-        <div class="skill-category fade-in">
-          <h4>前端</h4>
-          <div class="skill-tags">
-            <span class="skill-tag">HTML / CSS</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Vue</span>
-            <span class="skill-tag">Tailwind</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <h4>後端</h4>
-          <div class="skill-tags">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Go</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">GraphQL</span>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <h4>工具與其他</h4>
-          <div class="skill-tags">
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Linux</span>
-          </div>
-        </div>
-
+      <!-- Tabs -->
+      <div class="science-tabs fade-in">
+        <button class="science-tab active" data-tab="quantum">
+          量子科學
+        </button>
+        <button class="science-tab" data-tab="cosmology">
+          宇宙科學
+        </button>
+        <button class="science-tab" data-tab="ai">
+          人工智能與數學
+        </button>
+        <div class="tab-indicator" id="tabIndicator"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ Portfolio ============ -->
-  <section class="section" id="portfolio">
-    <div class="container">
-      <h2 class="section-title fade-in">作品集</h2>
-      <p class="section-subtitle fade-in">PORTFOLIO</p>
-      <div class="portfolio-grid">
-
-        <article class="project-card fade-in">
-          <img class="project-thumb" src="assets/project-1.jpg" alt="專案名稱 A 截圖">
-          <div class="project-body">
-            <h4>專案名稱 A</h4>
+      <!-- Content Panels -->
+      <div class="science-content active" data-panel="quantum">
+        <div class="science-info">
+          <img src="assets/science-quantum.jpg" alt="量子科學" class="science-img" loading="lazy">
+          <div class="science-text">
+            <h3>量子科學</h3>
             <p>
-              一個簡潔高效的任務管理工具，支援即時協作與拖曳排序，
-              幫助團隊提升生產力。
+              量子力學揭示了微觀世界的奇妙規律——疊加態讓粒子同時存在於多個狀態，
+              糾纏現象讓分隔的粒子瞬間影響彼此。這不僅顛覆了我們對現實的認知，
+              更催生了量子計算、量子通信等革命性技術。
             </p>
-            <div class="project-tech">
-              <span>React</span>
-              <span>Node.js</span>
-              <span>PostgreSQL</span>
+            <div class="science-tags">
+              <span class="science-tag">疊加態</span>
+              <span class="science-tag">量子糾纏</span>
+              <span class="science-tag">量子計算</span>
+              <span class="science-tag">測不準原理</span>
             </div>
           </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <img class="project-thumb" src="assets/project-2.jpg" alt="專案名稱 B 截圖">
-          <div class="project-body">
-            <h4>專案名稱 B</h4>
-            <p>
-              數據可視化儀表板，將複雜數據轉化為直覺的圖表與指標，
-              支援多種資料來源。
-            </p>
-            <div class="project-tech">
-              <span>Vue</span>
-              <span>D3.js</span>
-              <span>Python</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card fade-in">
-          <img class="project-thumb" src="assets/project-3.jpg" alt="專案名稱 C 截圖">
-          <div class="project-body">
-            <h4>專案名稱 C</h4>
-            <p>
-              開源元件庫，提供 30+ 個可無障礙存取的 UI 元件，
-              專注於開發者體驗與自訂性。
-            </p>
-            <div class="project-tech">
-              <span>TypeScript</span>
-              <span>React</span>
-              <span>Storybook</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Contact ============ -->
-  <section class="section" id="contact">
-    <div class="container">
-      <h2 class="section-title fade-in">與我聯絡</h2>
-      <p class="section-subtitle fade-in">CONTACT</p>
-      <div class="contact-content fade-in">
-        <p>
-          有興趣合作、交流，或只是想打聲招呼？歡迎填寫表單或透過社群與我聯繫。
-        </p>
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <label for="name">姓名</label>
-            <input type="text" id="name" name="name" placeholder="你的姓名" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="message">訊息</label>
-            <textarea id="message" name="message" placeholder="寫下你想說的話..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">送出訊息</button>
-        </form>
-        <div class="contact-social">
-          <a href="#" aria-label="GitHub" title="GitHub">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" title="LinkedIn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
-          <a href="#" aria-label="Email" title="Email">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-          </a>
+        </div>
+        <div class="science-canvas-wrapper">
+          <canvas id="quantumCanvas" class="science-canvas"></canvas>
+          <p class="canvas-label">量子粒子波動模擬</p>
         </div>
       </div>
+
+      <div class="science-content" data-panel="cosmology">
+        <div class="science-info">
+          <img src="assets/science-cosmology.jpg" alt="宇宙科學" class="science-img" loading="lazy">
+          <div class="science-text">
+            <h3>宇宙科學</h3>
+            <p>
+              從大爆炸到黑洞，從暗物質到宇宙膨脹，宇宙學探索著時空的終極奧秘。
+              每一顆恆星的故事，每一個星系的運動，都在訴說著 138 億年的宇宙史詩。
+              我們仰望星空，也在凝視著過去。
+            </p>
+            <div class="science-tags">
+              <span class="science-tag">大爆炸</span>
+              <span class="science-tag">黑洞</span>
+              <span class="science-tag">暗物質</span>
+              <span class="science-tag">宇宙膨脹</span>
+            </div>
+          </div>
+        </div>
+        <div class="science-canvas-wrapper">
+          <canvas id="cosmosCanvas" class="science-canvas"></canvas>
+          <p class="canvas-label">星系螺旋旋轉模擬</p>
+        </div>
+      </div>
+
+      <div class="science-content" data-panel="ai">
+        <div class="science-info">
+          <img src="assets/science-ai.jpg" alt="人工智能" class="science-img" loading="lazy">
+          <div class="science-text">
+            <h3>人工智能及其數學運用</h3>
+            <p>
+              人工智能的核心是數學——線性代數構建了神經網絡的骨架，
+              微積分驅動了梯度下降的優化，概率論賦予了模型預測的能力。
+              從矩陣運算到反向傳播，數學是 AI 從理論走向實踐的橋樑。
+            </p>
+            <div class="science-tags">
+              <span class="science-tag">神經網絡</span>
+              <span class="science-tag">線性代數</span>
+              <span class="science-tag">梯度下降</span>
+              <span class="science-tag">反向傳播</span>
+            </div>
+          </div>
+        </div>
+        <div class="science-canvas-wrapper">
+          <canvas id="neuralCanvas" class="science-canvas"></canvas>
+          <p class="canvas-label">神經網絡脈衝傳播</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ============ Footer ============ -->
   <footer class="footer">
     <div class="container">
-      <button class="back-to-top" aria-label="回到頂部">
+      <button class="back-to-top" aria-label="回到頂部" id="backToTop">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
@@ -242,6 +175,10 @@
     </div>
   </footer>
 
+  <!-- ============ Scripts ============ -->
+  <script src="js/particles.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/science-canvas.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
